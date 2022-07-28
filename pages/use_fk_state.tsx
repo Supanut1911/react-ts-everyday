@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+//CASE 1 moreType issue
+
 const UseFKState = () => {
   //auto infer type by tyescript
   const [bool, setBool] = useState(false);
@@ -30,6 +32,7 @@ const UseFKState = () => {
   );
 };
 
+//CASE 2 array type issue
 interface Items {
   id: number;
   name: string;
@@ -66,6 +69,48 @@ const Issue_array = () => {
   );
 };
 
-export default Issue_array;
+//CASE 3 fix data type maybe from fetch API
+
+interface User {
+  id: number;
+  name: string;
+}
+
+const api = (): Promise<User> => {
+  return Promise.resolve({
+    id: 1,
+    name: "John",
+  });
+};
+
+// const api = (): Promise<User> => {
+//   return fetch("someURL");
+// };
+
+const Fix_type = () => {
+  const [data, setData] = useState<User | null>(null);
+
+  useEffect(() => {
+    //best pratices below there(Immediately-invoked Function Expressuion (IIFE)), so better than const api2 = async () => { setDate(await api()) }
+    (async () => {
+      setData(await api());
+    })();
+  }, []);
+  console.log("data", data);
+
+  if (data === null) {
+    console.log(data);
+
+    return <div>isLoading</div>;
+  }
+
+  return (
+    <>
+      <div>name: {data.name}</div>
+    </>
+  );
+};
 
 // export default UseFKState;
+// export default Issue_array;
+export default Fix_type;
