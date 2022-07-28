@@ -1,10 +1,10 @@
-import BaseBasicComponent from "../components/base_basic_component";
+import Profile from "../components/Profile";
 
 const BasicComponent = () => {
   return (
     <>
       <div>
-        <BaseBasicComponent name={"Jone"} age={35} />
+        <Profile name={"Jone"} age={35} />
       </div>
     </>
   );

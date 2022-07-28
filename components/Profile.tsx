@@ -1,6 +1,6 @@
 import { ProfileProps } from "../types/Profile";
 
-const BaseBasicComponent = ({ name, age }: ProfileProps) => {
+const Profile = ({ name, age }: ProfileProps) => {
   return (
     <>
       <div>
@@ -11,4 +11,4 @@ const BaseBasicComponent = ({ name, age }: ProfileProps) => {
   );
 };
 
-export default BaseBasicComponent;
+export default Profile;
