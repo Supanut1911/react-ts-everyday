@@ -29,7 +29,7 @@ const EnumX = () => {
   return (
     <>
       <div>
-        <ExampeComponent color={Colors.RED} />
+        <ExampeComponent color={Colors.Red} />
       </div>
     </>
   );
